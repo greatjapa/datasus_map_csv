@@ -33,15 +33,15 @@ FIELDNAMES = [
 LOCNASC = {
     "9": "Ignorado",
     "1": "Hospital",
-    "2": "Outro Estab Saúde",
-    "3": "Domicílio",
+    "2": "Outro Estab Saude",
+    "3": "Domicilio",
     "4": "Outros"
 }
 
 ESTCIVMAE = {
     "1": "Solteira",
     "2": "Casada",
-    "3": "Viúva",
+    "3": "Viuva",
     "4": "Separado judicialmente/Divorciado",
     "9": "Ignorado",
 }
@@ -66,7 +66,7 @@ GESTACAO = {
 }
 
 GRAVIDEZ = {
-    "1": "Única",
+    "1": "Unica",
     "2": "Dupla",
     "3": "Tripla e mais",
     "9": "Ignorado"
@@ -74,7 +74,7 @@ GRAVIDEZ = {
 
 PARTO = {
     "1": "Vaginal",
-    "2": "Cesáreo",
+    "2": "Cesareo",
     "9": "Ignorado"
 }
 
@@ -103,7 +103,7 @@ RACACOR = {
 IDANOMAL = {
     "9": "Ignorado",
     "1": "Sim",
-    "2": "Não"
+    "2": "Nao"
 }
 
 def enrich(row):

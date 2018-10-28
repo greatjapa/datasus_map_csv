@@ -70,8 +70,8 @@ def calc_idade(value):
     return "Idade ignorada"
 
 TIPOBITO = {
-    "1": "óbito fetal",
-    "2": "óbito não fetal",
+    "1": "obito fetal",
+    "2": "obito nao fetal",
 }
 
 SEXO = {
@@ -91,7 +91,7 @@ RACACOR = {
 ESTCIV = {
     "1": "Solteiro",
     "2": "Casado",
-    "3": "Viúvo",
+    "3": "Viuvo",
     "4": "Separado judicialmente/Divorciado",
     "9": "Ignorado",
 }
@@ -107,9 +107,9 @@ ESC = {
 
 LOCOCOR = {
     "1": "Hospital",
-    "2": "Outro estab saúde",
-    "3": "Domicílio",
-    "4": "Via Pública",
+    "2": "Outro estab saude",
+    "3": "Domicilio",
+    "4": "Via Publica",
     "5": "Outros",
     "9": "Ignorado"
 }
@@ -124,7 +124,7 @@ ESCMAE = {
 }
 
 GRAVIDEZ = {
-    "1": "Única",
+    "1": "Unica",
     "2": "Dupla",
     "3": "Tripla e mais",
     "9": "Ignorado"
@@ -142,7 +142,7 @@ GESTACAO = {
 
 PARTO = {
     "1": "Vaginal",
-    "2": "Cesáreo",
+    "2": "Cesareo",
     "9": "Ignorado"
 }
 
@@ -155,66 +155,66 @@ OBITOPARTO = {
 
 OBITOGRAV = {
     "1": "Sim",
-    "2": "Não",
+    "2": "Nao",
     "9": "Ignorado"
 }
 
 OBITOPUERP = {
     "1": "Sim: ate 42 dias",
     "2": "SIm: de 43 dias a 01 ano",
-    "3": "Não",
+    "3": "Nao",
     "9": "Ignorado"
 }
 
 ASSISTMED = {
-    "1": "Com assistência",
-    "2": "Sem assistência",
+    "1": "Com assistencia",
+    "2": "Sem assistencia",
     "9": "Ignorado"
 }
 
 EXAME = {
     "1": "Sim",
-    "2": "Não",
+    "2": "Nao",
     "9": "Ignorado"
 }
 
 CIRURGIA = {
     "1": "Sim",
-    "2": "Não",
+    "2": "Nao",
     "9": "Ignorado"
 }
 
 NECROPSIA = {
     "1": "Sim",
-    "2": "Não",
+    "2": "Nao",
     "9": "Ignorado"
 }
 
 CIRCOBITO = {
     "1": "Acidente",
-    "2": "Suicídio",
-    "3": "Homicídio",
+    "2": "Suicidio",
+    "3": "Homicidio",
     "4": "Outros",
     "9": "Ignorado"
 }
 
 ACIDTRAB = {
     "1": "Sim",
-    "2": "Não",
+    "2": "Nao",
     "9": "Ignorado"
 }
 
 FONTE = {
-    "1": "Boletim de Ocorrência",
+    "1": "Boletim de Ocorrencia",
     "2": "Hospital",
-    "3": "Família",
+    "3": "Familia",
     "4": "Outra",
     "9": "Ignorado"
 }
 
 TPPOS = {
     "1": "Sim",
-    "2": "Não"
+    "2": "Nao"
 }
 
 ATESTANTE = {
@@ -226,14 +226,14 @@ ATESTANTE = {
 }
 
 FONTEINV = {
-    "1": "Comitê de Morte Materna e/ou Infantil",
-    "2": "Visita domiciliar / Entrevista família",
-    "3": "Estab Saúde / Prontuário",
+    "1": "Comite de Morte Materna e/ou Infantil",
+    "2": "Visita domiciliar / Entrevista familia",
+    "3": "Estab Saude / Prontuario",
     "4": "Relacion com outros bancos de dados",
     "5": "SVO",
     "6": "IML",
     "7": "Outra fonte",
-    "8": "Múltiplas fontes",
+    "8": "Multiplas fontes",
     "9": "Ignorado"
 }
 
