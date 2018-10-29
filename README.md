@@ -31,9 +31,16 @@ $ python3 sim.py DOPR2016.csv
 ```
 A conversão acima gera, por exemplo, o arquivo `e_DOPR2016.csv`.
 
+### Dados de atendimento ou arquivos `sihsus`: 
+
+```bash
+$ python3 sihsus.py RDPR1608.csv
+```
+A conversão acima gera, por exemplo, o arquivo `e_RDPR1608.csv`.
+
 ### Critérios de enriquecimento
 
-Todas as conversões possuem executam 2 passos:
+Todas as conversões executam 2 passos:
 1. Remover colunas 
 ```
 Colunas que não possuem descrição na documentação do DATASUS serão removidas.
