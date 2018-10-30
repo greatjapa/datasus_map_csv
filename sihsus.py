@@ -109,13 +109,31 @@ def enrich(row):
     row["SEXO"] = SEXO.get(row['SEXO'], row['SEXO'])
     return row
 
+def clean(str):
+    return str.replace('\"', '').replace("\n", "").replace("\x00", "")
+
+def to_dict(first_line, line):
+    columns = first_line.split(",")
+    values = line.split(",")
+    result = {}
+    for i in range(len(columns)):
+        # if i < len(values):
+        result[clean(columns[i])] = clean(values[i])
+    return result
+
 def map(filename):
-    with open(filename) as csv_in, open('e_' + filename, 'w') as csv_out:
-        reader = csv.DictReader(csv_in)
+    with open(filename, 'rb') as csv_in, open('e_' + filename, 'w') as csv_out:
         writer = csv.DictWriter(csv_out, fieldnames=FIELDNAMES, extrasaction='ignore')
         writer.writeheader()
-        for row in reader:
-            writer.writerow(enrich(row))
+
+        csv_in = csv_in.read().decode("utf-8", 'ignore')
+        lines = csv_in.split("\n")
+        first_line = lines[0]
+        for i in range(1, len(lines)):
+            line = lines[i]
+            if len(line.strip()) > 0:
+                row = to_dict(first_line, line)
+                writer.writerow(enrich(row))
 
 def main():
     map(sys.argv[1])
