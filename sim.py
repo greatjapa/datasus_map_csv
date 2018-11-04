@@ -1,7 +1,9 @@
 import csv
 import sys
+import hashlib
 
 FIELDNAMES = [
+    "IDENTIFICACAO",
     "NUMERODO",
     "CODINST",
     "TIPOBITO",
@@ -237,6 +239,13 @@ FONTEINV = {
     "9": "Ignorado"
 }
 
+def generate_id(row):
+    hash = hashlib.md5()
+    hash.update(row["DTNASC"].encode())
+    hash.update(row["SEXO"].encode())
+    hash.update(row["RACACOR"].encode())
+    return hash.hexdigest()
+
 def enrich(row):
     row["IDADE"] = calc_idade(row["IDADE"])
 
@@ -263,6 +272,7 @@ def enrich(row):
     row["TPPOS"] = TPPOS.get(row['TPPOS'], row['TPPOS'])
     row["ATESTANTE"] = ATESTANTE.get(row['ATESTANTE'], row['ATESTANTE'])
     row["FONTEINV"] = FONTEINV.get(row['FONTEINV'], row['FONTEINV'])
+    row["IDENTIFICACAO"] = generate_id(row)
     return row
 
 def map(filename):

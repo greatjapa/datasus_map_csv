@@ -1,7 +1,9 @@
 import csv
 import sys
+import hashlib
 
 FIELDNAMES = [
+    "IDENTIFICACAO",
     "NUMERODN",
     "CODINST",
     "CODESTAB",
@@ -106,6 +108,13 @@ IDANOMAL = {
     "2": "Nao"
 }
 
+def generate_id(row):
+    hash = hashlib.md5()
+    hash.update(row["DTNASC"].encode())
+    hash.update(row["SEXO"].encode())
+    hash.update(row["RACACOR"].encode())
+    return hash.hexdigest()
+
 def enrich(row):
     row["LOCNASC"] = LOCNASC.get(row['LOCNASC'], row['LOCNASC'])
     row["ESTCIVMAE"] = ESTCIVMAE.get(row['ESTCIVMAE'], row['ESTCIVMAE'])
@@ -117,6 +126,7 @@ def enrich(row):
     row["SEXO"] = SEXO.get(row['SEXO'], row['SEXO'])
     row["RACACOR"] = RACACOR.get(row['RACACOR'], row['RACACOR'])
     row["IDANOMAL"] = IDANOMAL.get(row['IDANOMAL'], row['IDANOMAL'])
+    row["IDENTIFICACAO"] = generate_id(row)
     return row
 
 def map(filename):

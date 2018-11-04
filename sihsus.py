@@ -1,8 +1,10 @@
 import csv
 import sys
 import os
+import hashlib
 
 FIELDNAMES = [
+    "IDENTIFICACAO",
     "UF_ZI",
     "ANO_CMPT",
     "MES_CMPT",
@@ -295,6 +297,21 @@ MARCA_UTI = {
     "99": "UTI Doador"
 }
 
+def generate_id(row):
+    hash = hashlib.md5()
+    hash.update(row["NASC"].encode())
+    hash.update(row["SEXO"].encode())
+    hash.update(row["RACA_COR"].encode())
+    return hash.hexdigest()
+
+def normalize_nasc(nasc):
+    if len(nasc) != 8:
+        return nasc
+    year = nasc[0:4]
+    month = nasc[4:6]
+    day = nasc[6:8]
+    return day + month + year
+
 def enrich(row):
     row["SEXO"] = SEXO.get(row['SEXO'], row['SEXO'])
     row["IDENT"] = IDENT.get(row['IDENT'], row['IDENT'])
@@ -309,6 +326,8 @@ def enrich(row):
     row["VINCPREV"] = VINCPREV.get(row['VINCPREV'], row['VINCPREV'])
     row["MARCA_UCI"] = MARCA_UCI.get(row['MARCA_UCI'], row['MARCA_UCI'])
     row["MARCA_UTI"] = MARCA_UTI.get(row['MARCA_UTI'], row['MARCA_UTI'])
+    row["NASC"] = normalize_nasc(row['NASC'])
+    row["IDENTIFICACAO"] = generate_id(row)
     return row
 
 def clean(str):
