@@ -1,9 +1,12 @@
 import csv
 import sys
 import hashlib
+import json
+
+with open('municipios.json') as f:
+    MUNICIPIOS = json.load(f)
 
 FIELDNAMES = [
-    "IDENTIFICACAO",
     "NUMERODO",
     "CODINST",
     "TIPOBITO",
@@ -239,13 +242,6 @@ FONTEINV = {
     "9": "Ignorado"
 }
 
-def generate_id(row):
-    hash = hashlib.md5()
-    hash.update(row["DTNASC"].encode())
-    hash.update(row["SEXO"].encode())
-    hash.update(row["RACACOR"].encode())
-    return hash.hexdigest()
-
 def enrich(row):
     row["IDADE"] = calc_idade(row["IDADE"])
 
@@ -254,11 +250,13 @@ def enrich(row):
     row["RACACOR"] = RACACOR.get(row['RACACOR'], row['RACACOR'])
     row["ESTCIV"] = ESTCIV.get(row['ESTCIV'], row['ESTCIV'])
     row["ESC"] = ESC.get(row['ESC'], row['ESC'])
+    row["CODMUNRES"] = MUNICIPIOS.get(row["CODMUNRES"], row["CODMUNRES"])
     row["LOCOCOR"] = LOCOCOR.get(row['LOCOCOR'], row['LOCOCOR'])
     row["GRAVIDEZ"] = GRAVIDEZ.get(row['GRAVIDEZ'], row['GRAVIDEZ'])
     row["ESCMAE"] = ESCMAE.get(row['ESCMAE'], row['ESCMAE'])
     row["GESTACAO"] = GESTACAO.get(row['GESTACAO'], row['GESTACAO'])
     row["PARTO"] = PARTO.get(row['PARTO'], row['PARTO'])
+    row["CODMUNOCOR"] = MUNICIPIOS.get(row["CODMUNOCOR"], row["CODMUNOCOR"])
     row["OBITOPARTO"] = OBITOPARTO.get(row['OBITOPARTO'], row['OBITOPARTO'])
     row["OBITOGRAV"] = OBITOGRAV.get(row['OBITOGRAV'], row['OBITOGRAV'])
     row["OBITOPUERP"] = OBITOPUERP.get(row['OBITOPUERP'], row['OBITOPUERP'])
@@ -272,7 +270,6 @@ def enrich(row):
     row["TPPOS"] = TPPOS.get(row['TPPOS'], row['TPPOS'])
     row["ATESTANTE"] = ATESTANTE.get(row['ATESTANTE'], row['ATESTANTE'])
     row["FONTEINV"] = FONTEINV.get(row['FONTEINV'], row['FONTEINV'])
-    row["IDENTIFICACAO"] = generate_id(row)
     return row
 
 def map(filename):

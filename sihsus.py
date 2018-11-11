@@ -2,9 +2,12 @@ import csv
 import sys
 import os
 import hashlib
+import json
+
+with open('municipios.json') as f:
+    MUNICIPIOS = json.load(f)
 
 FIELDNAMES = [
-    "IDENTIFICACAO",
     "UF_ZI",
     "ANO_CMPT",
     "MES_CMPT",
@@ -297,13 +300,6 @@ MARCA_UTI = {
     "99": "UTI Doador"
 }
 
-def generate_id(row):
-    hash = hashlib.md5()
-    hash.update(row["NASC"].encode())
-    hash.update(row["SEXO"].encode())
-    hash.update(row["RACA_COR"].encode())
-    return hash.hexdigest()
-
 def normalize_nasc(nasc):
     if len(nasc) != 8:
         return nasc
@@ -318,6 +314,8 @@ def enrich(row):
     row["GESTAO"] = GESTAO.get(row['GESTAO'], row['GESTAO'])
     row["MORTE"] = MORTE.get(row['MORTE'], row['MORTE'])
     row["INSTRU"] = INSTRU.get(row['INSTRU'], row['INSTRU'])
+    row["MUNIC_RES"] = MUNICIPIOS.get(row['MUNIC_RES'], row['MUNIC_RES'])
+    row["MUNIC_MOV"] = MUNICIPIOS.get(row['MUNIC_MOV'], row['MUNIC_MOV'])
     row["RACA_COR"] = RACA_COR.get(row['RACA_COR'], row['RACA_COR'])
     row["REGCT"] = REGCT.get(row['REGCT'], row['REGCT'])
     row["FAEC_TP"] = FAEC_TP.get(row['FAEC_TP'], row['FAEC_TP'])
@@ -327,7 +325,6 @@ def enrich(row):
     row["MARCA_UCI"] = MARCA_UCI.get(row['MARCA_UCI'], row['MARCA_UCI'])
     row["MARCA_UTI"] = MARCA_UTI.get(row['MARCA_UTI'], row['MARCA_UTI'])
     row["NASC"] = normalize_nasc(row['NASC'])
-    row["IDENTIFICACAO"] = generate_id(row)
     return row
 
 def clean(str):
