@@ -6,6 +6,9 @@ import json
 with open('municipios.json') as f:
     MUNICIPIOS = json.load(f)
 
+with open('cid.json') as f:
+    CID = json.load(f)
+
 FIELDNAMES = [
     "NUMERODO",
     "CODINST",
@@ -257,6 +260,8 @@ def enrich(row):
     row["GESTACAO"] = GESTACAO.get(row['GESTACAO'], row['GESTACAO'])
     row["PARTO"] = PARTO.get(row['PARTO'], row['PARTO'])
     row["CODMUNOCOR"] = MUNICIPIOS.get(row["CODMUNOCOR"], row["CODMUNOCOR"])
+    row["CAUSABAS"] = CID.get(row["CAUSABAS"], row["CAUSABAS"])
+    row["CAUSABAS_O"] = CID.get(row["CAUSABAS_O"], row["CAUSABAS_O"])
     row["OBITOPARTO"] = OBITOPARTO.get(row['OBITOPARTO'], row['OBITOPARTO'])
     row["OBITOGRAV"] = OBITOGRAV.get(row['OBITOGRAV'], row['OBITOGRAV'])
     row["OBITOPUERP"] = OBITOPUERP.get(row['OBITOPUERP'], row['OBITOPUERP'])

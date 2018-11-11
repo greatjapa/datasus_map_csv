@@ -7,6 +7,9 @@ import json
 with open('municipios.json') as f:
     MUNICIPIOS = json.load(f)
 
+with open('cid.json') as f:
+    CID = json.load(f)
+
 FIELDNAMES = [
     "UF_ZI",
     "ANO_CMPT",
@@ -324,6 +327,16 @@ def enrich(row):
     row["VINCPREV"] = VINCPREV.get(row['VINCPREV'], row['VINCPREV'])
     row["MARCA_UCI"] = MARCA_UCI.get(row['MARCA_UCI'], row['MARCA_UCI'])
     row["MARCA_UTI"] = MARCA_UTI.get(row['MARCA_UTI'], row['MARCA_UTI'])
+    row["DIAG_PRINC"] = CID.get(row['DIAG_PRINC'], row['DIAG_PRINC'])
+    row["DIAGSEC1"] = CID.get(row['DIAGSEC1'], row['DIAGSEC1'])
+    row["DIAGSEC2"] = CID.get(row['DIAGSEC2'], row['DIAGSEC2'])
+    row["DIAGSEC3"] = CID.get(row['DIAGSEC3'], row['DIAGSEC3'])
+    row["DIAGSEC4"] = CID.get(row['DIAGSEC4'], row['DIAGSEC4'])
+    row["DIAGSEC5"] = CID.get(row['DIAGSEC5'], row['DIAGSEC5'])
+    row["DIAGSEC6"] = CID.get(row['DIAGSEC6'], row['DIAGSEC6'])
+    row["DIAGSEC7"] = CID.get(row['DIAGSEC7'], row['DIAGSEC7'])
+    row["DIAGSEC8"] = CID.get(row['DIAGSEC8'], row['DIAGSEC8'])
+    row["DIAGSEC9"] = CID.get(row['DIAGSEC9'], row['DIAGSEC9'])
     row["NASC"] = normalize_nasc(row['NASC'])
     return row
 

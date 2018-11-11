@@ -6,6 +6,9 @@ import json
 with open('municipios.json') as f:
     MUNICIPIOS = json.load(f)
 
+with open('cid.json') as f:
+    CID = json.load(f)
+
 FIELDNAMES = [
     "NUMERODN",
     "CODINST",
@@ -123,6 +126,7 @@ def enrich(row):
     row["CONSULTAS"] = CONSULTAS.get(row['CONSULTAS'], row['CONSULTAS'])
     row["SEXO"] = SEXO.get(row['SEXO'], row['SEXO'])
     row["RACACOR"] = RACACOR.get(row['RACACOR'], row['RACACOR'])
+    row["CODANOMAL"] = CID.get(row['CODANOMAL'], row['CODANOMAL'])
     row["IDANOMAL"] = IDANOMAL.get(row['IDANOMAL'], row['IDANOMAL'])
     return row
 
