@@ -49,26 +49,6 @@ def to_hash(*args):
         hash.update(arg.encode())
     return hash.hexdigest()
 
-def generate_sim_id(row):
-    hash = hashlib.md5()
-    hash.update(row["DTNASC"].encode())
-    hash.update(row["SEXO"].encode())
-    hash.update(row["RACACOR"].encode())
-    hash.update(row["CODMUNRES"].encode())
-    hash.update(row["DTOBITO"].encode())
-    hash.update("Com obito".encode())
-    return hash.hexdigest() 
-
-def generate_sihsus_id(row):
-    hash = hashlib.md5()
-    hash.update(row["NASC"].encode())
-    hash.update(row["SEXO"].encode())
-    hash.update(row["RACA_COR"].encode())
-    hash.update(row["MUNIC_RES"].encode())
-    hash.update(row["DT_SAIDA"].encode())
-    hash.update(row["MORTE"].encode())
-    return hash.hexdigest() 
-
 def get_date_1(value):
     if len(value) == 8:
         day = int(value[0:2])
@@ -104,7 +84,7 @@ def main():
     c.execute(sim_sql)
 
     for row in get_sim():
-        if len(row["DTNASC"]) > 0 and row["SEXO"] != "Ignorado" and len(row["RACACOR"]) > 0:
+        if len(row["DTNASC"]) > 0 and row["SEXO"] != "Ignorado" and len(row["RACACOR"]) > 0 and (row["LOCOCOR"] == "Hospital" or row["LOCOCOR"] == "Outro estab saude"):
             DTNASC = get_date_1(row['DTNASC'])
             SEXO = row["SEXO"]
             RACACOR = row["RACACOR"]
@@ -113,7 +93,7 @@ def main():
             LOCOCOR = row['LOCOCOR']
             CAUSABAS = row['CAUSABAS']
 
-            ID_INTEGRACAO = to_hash(DTNASC.isoformat(), SEXO, RACACOR, CODMUNRES, DTOBITO.isoformat())
+            ID_INTEGRACAO = to_hash(DTNASC.isoformat(), SEXO, RACACOR, CODMUNRES, DTOBITO.isoformat(), "Com obito")
             c.execute('''INSERT INTO sim (ID_INTEGRACAO, SEXO, RACACOR, DTNASC, CODMUNRES, DTOBITO, LOCOCOR, CAUSABAS) VALUES (?,?,?,?,?,?,?,?)''', (ID_INTEGRACAO,SEXO,RACACOR,DTNASC,CODMUNRES,DTOBITO,LOCOCOR,CAUSABAS))
 
     sihsus_sql = """
@@ -128,7 +108,8 @@ def main():
             CEP text,
             DT_INTER date,
             DT_SAIDA date,
-            DIAG_PRINC text
+            DIAG_PRINC text,
+            MORTE text
     );"""
 
     c.execute(sihsus_sql)
@@ -145,10 +126,11 @@ def main():
                 DT_INTER = get_date_2(row['DT_INTER'])
                 DT_SAIDA = get_date_2(row['DT_SAIDA'])
                 DIAG_PRINC = row['DIAG_PRINC']
+                MORTE = row["MORTE"]
 
-                ID_INTEGRACAO = to_hash(NASC.isoformat(), SEXO, RACA_COR, MUNIC_RES, DT_SAIDA.isoformat())
+                ID_INTEGRACAO = to_hash(NASC.isoformat(), SEXO, RACA_COR, MUNIC_RES, DT_SAIDA.isoformat(), MORTE)
                 ID_ATENDIMENTO = to_hash(NASC.isoformat(), SEXO, RACA_COR, MUNIC_RES, CEP)
-                c.execute('''INSERT INTO sihsus (ID_INTEGRACAO, ID_ATENDIMENTO, SEXO, RACA_COR, NASC, MUNIC_RES, CEP, DT_INTER, DT_SAIDA, DIAG_PRINC) VALUES (?,?,?,?,?,?,?,?,?,?)''', (ID_INTEGRACAO,ID_ATENDIMENTO,SEXO,RACA_COR,NASC,MUNIC_RES,CEP,DT_INTER,DT_SAIDA,DIAG_PRINC))
+                c.execute('''INSERT INTO sihsus (ID_INTEGRACAO, ID_ATENDIMENTO, SEXO, RACA_COR, NASC, MUNIC_RES, CEP, DT_INTER, DT_SAIDA, DIAG_PRINC, MORTE) VALUES (?,?,?,?,?,?,?,?,?,?,?)''', (ID_INTEGRACAO,ID_ATENDIMENTO,SEXO,RACA_COR,NASC,MUNIC_RES,CEP,DT_INTER,DT_SAIDA,DIAG_PRINC,MORTE))
 
     conn.commit()
     conn.close()
