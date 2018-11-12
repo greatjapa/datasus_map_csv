@@ -17,12 +17,14 @@ Isso resultou em uma base com `73327` registros minimamente válidos. Abaixo alg
 | "Masculino"   | 41773   |
 | "Feminino"    | 31554   |
 
+
 | SIM (RACACOR) | Valores |
 | "Branca"      | 59667   |
 | "Parda"       | 10004   |
 | "Preta"       | 2791    |
 | "Amarela"     | 742     |
 | "Indigena"    | 123     |
+
 
 | SIM (TOP 5 CODMUNRES) | Valores |
 | "Curitiba"            | 10495   |
@@ -31,6 +33,7 @@ Isso resultou em uma base com `73327` registros minimamente válidos. Abaixo alg
 | "Maringá"             | 2142    |
 | "Cascavel"            | 1733    |
 
+
 | SIM (LOCOCOR)       | Valores |
 | "Hospital"          | 48222   |
 | "Domicilio"         | 16078   |
@@ -38,6 +41,7 @@ Isso resultou em uma base com `73327` registros minimamente válidos. Abaixo alg
 | "Via Publica"       | 3296    |
 | "Outros"            | 2239    |
 | "Ignorado"          | 15      |
+
 
 | SIM (TOP 5 CAUSABAS)                                | Valores |
 | "I21.9 Infarto agudo do miocardio NE"               |  4849   |
@@ -61,6 +65,7 @@ Isso resultou em uma base com `670749` registros minimamente válidos. Abaixo al
 | "Masculino"       | 296719  |
 | "Feminino"        | 374030  |
 
+
 | SIHSUS (RACA_COR) | Valores |
 | "Branca"          | 552935  |
 | "Parda"           | 93921   |
@@ -68,12 +73,14 @@ Isso resultou em uma base com `670749` registros minimamente válidos. Abaixo al
 | "Amarela"         | 5812    |
 | "Indigena"        | 740     |
 
+
 | SIHSUS (TOP 5 MUNIC_RES) | Valores |
 | "Curitiba"               | 82649   |
 | "Londrina"               | 31638   |
 | "Maringá"                | 21975   |
 | "Ponta Grossa"           | 19433   |
 | "São José dos Pinhais"   | 16708   |
+
 
 | SIHSUS (TOP 5 DIAG_PRINC)            | Valores |
 | "O80.0 Parto espontaneo cefalico"    |  28199  |
