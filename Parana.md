@@ -17,25 +17,24 @@ Isso resultou em uma base com `73327` registros minimamente válidos. Abaixo alg
 | "Masculino"   | 41773   |
 | "Feminino"    | 31554   |
 
-.
-
 | SIM (RACACOR) | Valores |
+|---------------|---------|
 | "Branca"      | 59667   |
 | "Parda"       | 10004   |
 | "Preta"       | 2791    |
 | "Amarela"     | 742     |
 | "Indigena"    | 123     |
 
-
 | SIM (TOP 5 CODMUNRES) | Valores |
+|-----------------------|---------|
 | "Curitiba"            | 10495   |
 | "Londrina"            | 3629    |
 | "Ponta Grossa"        | 2337    |
 | "Maringá"             | 2142    |
 | "Cascavel"            | 1733    |
 
-
 | SIM (LOCOCOR)       | Valores |
+|---------------------|---------|
 | "Hospital"          | 48222   |
 | "Domicilio"         | 16078   |
 | "Outro estab saude" | 3477    |
