@@ -17,6 +17,7 @@ Isso resultou em uma base com `73327` registros minimamente válidos. Abaixo alg
 | "Masculino"   | 41773   |
 | "Feminino"    | 31554   |
 
+.
 
 | SIM (RACACOR) | Valores |
 | "Branca"      | 59667   |
