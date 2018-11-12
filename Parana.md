@@ -116,3 +116,27 @@ Isso resultou em uma base com `670749` registros minimamente válidos. Abaixo al
 | "I50.0 Insuf cardiaca congestiva"    |  9967   |
 | "I50.9 Insuf cardiaca NE"            |  9321   |
 
+## Queries uteis
+
+Lista atendimentos que casam com um registro de obito:
+```sql
+select sihsus.ID_ATENDIMENTO, sihsus.SEXO, sihsus.RACA_COR, sihsus.MUNIC_RES, sihsus.CEP, sihsus.DIAG_PRINC, sihsus.DT_INTER, sihsus.DT_SAIDA, sim.DTOBITO, sim.CAUSABAS
+from sihsus
+inner join sim
+on sim.ID_INTEGRACAO = sihsus.ID_INTEGRACAO
+order by sihsus.ID_ATENDIMENTO;
+```
+
+Contagem de valores de uma dada tabela e coluna (no caso abaixo usamos tabela `sim` e coluna `SEXO`):
+```sql
+select SEXO, count(SEXO) from sim group by SEXO order by count(SEXO) desc;
+```
+
+Contagem de atendimento por pessoa:
+```sql
+select ID_INTEGRACAO, ID_ATENDIMENTO, count(*) 
+from sihsus 
+group by ID_INTEGRACAO, ID_ATENDIMENTO 
+having  count(*) > 1
+order by count(*) desc;
+```
