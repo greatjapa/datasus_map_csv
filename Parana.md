@@ -14,6 +14,20 @@ Até o presente momento estamos trabalhando com o seguinte modelo de dados para 
 | LOCOCOR       | local do obito                                              |
 | CAUSABAS      | causa da morte                                              |
 
+| COLUNAS (SIHSUS) | Descrição                                                   |
+|------------------|-------------------------------------------------------------|
+| ID               | identificador sequencial da tabela                          |
+| ID_INTEGRACAO    | hash composta por NASC, SEXO, RACA_COR, MUNIC_RES, DT_SAIDA |
+| ID_ATENDIMENTO   | hash composta por NASC, SEXO, RACA_COR, MUNIC_RES, CEP      |
+| SEXO             | sexo                                                        |
+| RACA_COR         | raça                                                        |
+| NASC             | data de nascimento                                          |
+| MUNIC_RES        | municipio de residencia                                     |
+| CEP              | cep                                                         |
+| DT_INTER         | data da internação                                          |
+| DT_SAIDA         | data de saída da internação                                 |
+| DIAG_PRINC       | diagnostico principal do atendimento                        |
+
 ## Mortalidade (SIM)
 
 Os dados obtidos são do ano de 2016 e, ao todo, somam `74740` registros, dentre os quais, removemos registros que possuiam valores ruins para nossa análise. São eles:
