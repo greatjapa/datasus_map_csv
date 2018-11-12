@@ -1,5 +1,19 @@
 # Estudo dos dados do Paraná
 
+Até o presente momento estamos trabalhando com o seguinte modelo de dados para `SIM` e `SIHSUS`:
+
+| COLUNAS (SIM) | Descrição                                                   |
+|---------------|-------------------------------------------------------------|
+| ID            | identificador sequencial da tabela                          |
+| ID_INTEGRACAO | hash composta por DTNASC, SEXO, RACACOR, CODMUNRES, DTOBITO |
+| SEXO          | sexo                                                        |
+| RACACOR       | raça                                                        |
+| DTNASC        | data de nascimento                                          |
+| CODMUNRES     | municipio de residencia                                     |
+| DTOBITO       | data de obito                                               |
+| LOCOCOR       | local do obito                                              |
+| CAUSABAS      | causa da morte                                              |
+
 ## Mortalidade (SIM)
 
 Os dados obtidos são do ano de 2016 e, ao todo, somam `74740` registros, dentre os quais, removemos registros que possuiam valores ruins para nossa análise. São eles:
