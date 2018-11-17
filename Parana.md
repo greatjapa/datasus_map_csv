@@ -203,6 +203,11 @@ select ID_ATENDIMENTO, count(*) from sihsus group by ID_ATENDIMENTO order by cou
 | "19cb14b0da8ea64142c3089066301e4b"                          | 42    |
 | "303717e5924eb0fe0ed243c18cf7bc37"                          | 42    |
 
+*OBS:* O número de atendimentos com morte foram `28396` dada pela query abaixo:
+```sql
+select count(*) from sihsus where MORTE='Com obito';
+```
+
 ## SIM X SIHSUS
 
 Como exemplo, considere a pessoa com maior número de atendimento na tabela `sihsus` e vamos ver toda seu histórico de atendimento:
