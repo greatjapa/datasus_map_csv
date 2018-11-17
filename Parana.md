@@ -44,7 +44,7 @@ Os dados obtidos são do ano de 2016 e, ao todo, somam `74740` registros, dentre
 Isso resultou em uma base com `51699` registros minimamente válidos. Abaixo algumas estatísticas:
 
 ```sql
-select SEXO, count(*) from sim group by SEXO order by count(*) desc limit 5;
+select SEXO, count(*) from sim group by SEXO order by count(*) desc;
 ```
 | SIM (SEXO)    | Valores |
 |---------------|---------|
@@ -52,7 +52,7 @@ select SEXO, count(*) from sim group by SEXO order by count(*) desc limit 5;
 | "Feminino"    | 23828   |
 
 ```sql
-select RACACOR, count(*) from sim group by RACACOR order by count(*) desc limit 5;
+select RACACOR, count(*) from sim group by RACACOR order by count(*) desc;
 ```
 | SIM (RACACOR) | Valores |
 |---------------|---------|
@@ -74,7 +74,7 @@ select CODMUNRES, count(*) from sim group by CODMUNRES order by count(*) desc li
 | "Cascavel"            | 1178    |
 
 ```sql
-select LOCOCOR, count(*) from sim group by LOCOCOR order by count(*) desc limit 5;
+select LOCOCOR, count(*) from sim group by LOCOCOR order by count(*) desc;
 ```
 | SIM (LOCOCOR)       | Valores |
 |---------------------|---------|
